@@ -4,7 +4,6 @@ import os
 
 USER_FILE = "users.txt"
 
-# 📁 File Utilities
 def load_users():
     """Load users from file into a dictionary {email: password}"""
     if not os.path.exists(USER_FILE):
@@ -22,8 +21,6 @@ def save_user(email, password):
     """Append a new user to the file"""
     with open(USER_FILE, 'a') as f:
         f.write(f"{email},{password}\n")
-
-# 📌 Validators
 def is_valid_email(email):
     """Check valid email format"""
     pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
@@ -37,7 +34,7 @@ def is_valid_password(password):
         any(char.isalpha() for char in password)
     )
 
-# 📝 Registration Form
+# Registration Form
 def register():
     st.subheader("📝 Register")
     email = st.text_input("Email", key="reg_email")
@@ -58,9 +55,9 @@ def register():
             save_user(email, password)
             st.success("Account created successfully!")
 
-# 🔐 Login Form
+# Login Form
 def login():
-    st.subheader("🔐 Login")
+    st.subheader(" Login")
     email = st.text_input("Email", key="login_email")
     password = st.text_input("Password", type="password", key="login_pass")
 
@@ -71,7 +68,6 @@ def login():
         else:
             st.error("Invalid credentials!")
 
-# 🚀 Main App
 def main():
     st.title("Login & Register System (File-Based)")
     menu = st.selectbox("Menu", ["Login", "Register"])
